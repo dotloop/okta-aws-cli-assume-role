@@ -28,7 +28,7 @@ This tool has been verified to work on macOS Sierra, High Sierra, Windows Server
 
 1. Copy the following PowerShell bootstrap script into your clipboard:
     ```powershell
-    Invoke-RestMethod https://raw.githubusercontent.com/oktadeveloper/okta-aws-cli-assume-role/master/bin/Install-OktaAwsCli.ps1 | clip.exe
+    Invoke-RestMethod https://raw.githubusercontent.com/dotloop/okta-aws-cli-assume-role/master/bin/Install-OktaAwsCli.ps1 | clip.exe
     ```
 2. Open a PowerShell console (regular user, NOT admin it will break)
 3. Right-click once the paste the bootstrap script into the session
@@ -39,7 +39,7 @@ This tool has been verified to work on macOS Sierra, High Sierra, Windows Server
 
 1. Run the following in a Terminal:
     ```bash
-    curl 'https://raw.githubusercontent.com/oktadeveloper/okta-aws-cli-assume-role/master/bin/install.sh' | bash
+    curl 'https://raw.githubusercontent.com/dotloop/okta-aws-cli-assume-role/master/bin/install.sh' | bash
     ```
 2. Customize **~/.okta/config.properties** to reflect your Okta and Amazon Web Services setup
 
@@ -64,7 +64,7 @@ Read more at [@tom-smith-okta's okta-awscli-java Docker repo](https://hub.docker
 Create a `.okta` directory in your home directory. For example, `~/.okta`.
 
 Download the latest release JAR and put it in `.okta`:
-https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases
+https://github.com/dotloop/okta-aws-cli-assume-role/releases
 
 Copy `config.properties` to `~/.okta/config.properties` and set
 **OKTA_ORG** and **OKTA_AWS_APP_URL** appropriately. For example,
@@ -94,7 +94,7 @@ okta-aws test sts get-caller-identity
 
 ## Compiling the application
 
-The application was built and compiled with [JetBrains' IntelliJ IDEA](https://www.jetbrains.com/idea/). Note that you don't have to compile the application in order to be able to execute it, since the compiled executable (a JAR file) is available [on GitHub](https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases).
+The application was built and compiled with [JetBrains' IntelliJ IDEA](https://www.jetbrains.com/idea/). Note that you don't have to compile the application in order to be able to execute it, since the compiled executable (a JAR file) is available [on GitHub](https://github.com/dotloop/okta-aws-cli-assume-role/releases).
 
 ### Prerequisites
 First of all, it goes without saying that you will need to install the [Java SE 8x](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or the [Java JDK 8x](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
@@ -105,7 +105,7 @@ Then you will need [Maven 2 or later](https://maven.apache.org/install.html) to 
 
 Get a single JAR with all dependencies:
 
-Use ```git clone https://github.com/oktadeveloper/okta-aws-cli-assume-role.git``` to clone the repository locally. Then, build with Maven:
+Use ```git clone https://github.com/dotloop/okta-aws-cli-assume-role.git``` to clone the repository locally. Then, build with Maven:
 
 ```bash
 mvn package

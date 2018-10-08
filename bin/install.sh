@@ -28,9 +28,9 @@ then
 fi
 
 mkdir -p ${HOME}/.okta
-releaseUrl=$(curl --head --silent https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases/latest | grep 'Location:' | cut -c11-)
+releaseUrl=$(curl --head --silent https://github.com/dotloop/okta-aws-cli-assume-role/releases/latest | grep 'Location:' | cut -c11-)
 releaseTag=$(echo $releaseUrl | awk 'BEGIN{FS="/"}{print $8}' | tr -d '\r')
-curl -L "https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases/download/${releaseTag}/okta-aws-cli-${releaseTag:1}.jar" --output "${HOME}/.okta/okta-aws-cli.jar"
+curl -L "https://github.com/dotloop/okta-aws-cli-assume-role/releases/download/${releaseTag}/okta-aws-cli-${releaseTag:1}.jar" --output "${HOME}/.okta/okta-aws-cli.jar"
 
 # bash functions
 bash_functions="${HOME}/.okta/bash_functions"

@@ -38,12 +38,14 @@ grep '^#OktaAWSCLI' "${bash_functions}" > /dev/null 2>&1
 if [ $? -ne 0 ]
 then
 echo '
+#OktaAWSCLI
 function okta-aws {
     withokta "aws --profile $1" $@
 }
 function okta-sls {
     withokta "sls --stage $1" $@
 }
+alias oacr="okta-aws default sts get-caller-identity > /dev/null"
 ' >> "${bash_functions}"
 fi
 
@@ -66,6 +68,7 @@ end
 function okta-sls
     withokta "sls --stage $argv[1]" $argv
 end
+alias oacr="okta-aws default sts get-caller-identity > /dev/null"
 ' >> "${fishConfig}"
 fi
 

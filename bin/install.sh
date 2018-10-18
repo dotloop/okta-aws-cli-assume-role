@@ -56,7 +56,7 @@ if [ $? -ne 0 ]
 then
 echo '
 #OktaAWSCLI
-export PATH="$HOME/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 function withokta
     java -Djava.net.useSystemProxies com.okta.tools.WithOkta $argv
 end

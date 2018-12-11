@@ -49,31 +49,27 @@ alias oacr="okta-aws default sts get-caller-identity > /dev/null"
 ' >> "${bash_functions}"
 fi
 
-# Create fish shell functions
-fishFunctionsDir="${HOME}/.config/fish/functions"
-mkdir -p "${fishFunctionsDir}"
+# Conditionally update fish profile
+fishConfig="${HOME}/.config/fish/config.fish"
+mkdir -p $(dirname "${fishConfig}")
+touch "${fishConfig}"
+grep '^#OktaAWSCLI' "${fishConfig}" > /dev/null 2>&1
+if [ $? -ne 0 ]
+then
 echo '
+#OktaAWSCLI
+export PATH="/usr/local/bin:$PATH"
+function withokta
+    java -Djava.net.useSystemProxies com.okta.tools.WithOkta $argv
+end
 function okta-aws
     withokta "aws --profile $argv[1]" $argv
 end
-' > "${fishFunctionsDir}/okta-aws.fish"
-echo '
 function okta-sls
     withokta "sls --stage $argv[1]" $argv
 end
-' >> "${fishFunctionsDir}/okta-sls.fish"
-
-# Conditionally update bash profile
-bashProfile="${HOME}/.bash_profile"
-grep '^#OktaAWSCLI' "${bashProfile}" > /dev/null 2>&1
-if [ $? -ne 0 ]
-then
-echo "
-#OktaAWSCLI
-if [ -f \"${bash_functions}\" ]; then
-    . \"${bash_functions}\"
-fi
-" >> "${bashProfile}"
+alias oacr="okta-aws default sts get-caller-identity > /dev/null"
+' >> "${fishConfig}"
 fi
 
 # Conditionally update bash profile
